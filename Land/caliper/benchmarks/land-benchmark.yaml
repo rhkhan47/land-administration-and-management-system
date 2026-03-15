@@ -1,0 +1,18 @@
+test:
+  name: land-benchmark
+  description: land workload benchmark
+  workers:
+    number: 2
+  rounds:
+    - label: buyRequest
+      description: submit buy requests
+      txDuration: 30
+      rateControl:
+        type: fixed-load
+        opts:
+          transactionLoad: 4
+      workload:
+        module: caliper/workload/land-workload.js
+        arguments:
+          assets: 10
+          contractId: landcc
